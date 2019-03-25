@@ -137,25 +137,20 @@ class Profile {
          })
          ///// получение кусов волют для первого пользователя
          Ivan.getStocks ((err, data) => {
-                if (err) {
-                 console.error("Error during get stock to Ivan ")
-                } else {
-                  console.log("successfully got the stock ")
-                }
-        })
-         ///// получение кусов волют для второго пользователя
-        Oleg.getStocks ((err, data) => {
-                if (err) {
-                 console.error("Error during get stock to Oleg ")
-                } else {
-                  console.log("successfully got the stock ")
-                }
-        })
-        
-        }
-        main();
-    
-    
+            if (err) {
+             console.error("Error during get stock to Ivan ")
+            } else {
+              console.log("successfully got the stock ")
+            }
+    })
+     ///// получение кусов волют для второго пользователя
+    Oleg.getStocks ((err, data) => {
+            if (err) {
+             console.error("Error during get stock to Oleg ")
+            } else {
+              console.log("successfully got the stock ")
+            }
+    })
     
     }
     main();
