@@ -155,6 +155,7 @@ class Profile {
     }
     main();
 */
+/*
 function main(){
   const Oleg = new Profile({
                     username: 'oleg',
@@ -232,6 +233,77 @@ function main(){
                }
             });
 
+}
+ main();
+*/
+
+function main(){
+  const Oleg = new Profile({
+                    username: 'oleg',
+                    name: { firstName: 'Oleg', lastName: 'Petrov' },
+                    password: 'olegsspass',
+                });
+
+           Oleg.createUser((err, data) => {
+             if (err) {
+                return console.error('Oleg was not created');
+                 } 
+             console.log(`Oleg was created`);
+
+                     Oleg.performLogin((err, data) => {
+                  if (err) {
+                      return console.error('Oleg was not loged in');
+                      }
+                  console.log(`Oleg was loged in`);
+
+                           Oleg.addMoney(
+                      { currency: 'RUB', amount: 100 }, (err, data) => {
+                         if (err) {
+                          return console.error('Error during adding money to Oleg');
+                             } 
+                         console.log(`Added 100 euros to Oleg`);                      
+                  })                  
+               })                  
+            })
+  
+        const Ivan = new Profile({
+                    username: 'ivan',
+                    name: { firstName: 'Ivan', lastName: 'Chernyshev' },
+                    password: 'ivanspass',
+                });
+
+           Ivan.createUser((err, data) => {
+             if (err) {
+                return console.error('Ivan was not created');
+                 }
+             console.log(`Ivan was created`);
+
+                Ivan.performLogin((err, data) => {
+                  if (err) {
+                      return console.error('Ivan was not loged in');
+                      }
+                  console.log(`Ivan was loged in`);
+                         
+                           Ivan.addMoney(
+                     { currency: 'EUR', amount: 500000 }, (err, data) => {
+                        if (err) {
+                          return console.error('Error during adding money to Ivan');
+                        } 
+                        console.log(`Added 500000 euros to Ivan`);                   
+                               Ivan.convertMoney ({ fromCurrency: 'EUR' , targetCurrency: 'Netcoin', targetAmount: 500000 }, (err, data) => {
+                                if (err) { 
+                              return  console.error(`Error during convert money for Ivan`)
+                               }
+                                console.log (`Money were converted from EUR to Netcoin, quantity: 500000`)
+                                     Ivan.transferMoney ({ to: "oleg", amount: 500000 }, (err, data)    => {
+                                       if (err) { 
+                                     return  console.error("error during transfer money to Oleg")}
+                                      console.log("successfully transferd money to Oleg amount: 500000 Netcoin")
+                            })
+                        })        
+                    })
+                 })           
+            })     
 }
  main();
 
